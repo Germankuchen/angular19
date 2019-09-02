@@ -1,0 +1,15 @@
+<h3>{{leyenda}}</h3>
+
+<div class="input-group">
+    <span class="input-group-btn">
+        <button class="btn btn-outline-danger" type="button" (click)="decrementar()">
+            <i class="fa fa-minus"></i>
+        </button>
+    </span>
+    <input type="number" class="form-control" placeholder="Porcetaje barra" name="progreso" [(ngModel)]="progreso">
+    <span class="input-group-btn">
+        <button class="btn btn-outline-success" type="button" (click)="incrementar()"> 
+            <i class="fa fa-plus"></i>
+        </button>
+    </span>
+</div>
