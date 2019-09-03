@@ -8,6 +8,9 @@ import { PAGES_ROUTER } from './pages.routes';
 import { FormsModule } from '@angular/forms';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 
+// Para generar los gráficos
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({ declarations: [
     DashboardComponent,
     ProgressComponent,
@@ -19,12 +22,12 @@ import { IncrementadorComponent } from '../components/incrementador/incrementado
     DashboardComponent,
     ProgressComponent,
     Graficas1Component,
-    PagesComponent,
-    IncrementadorComponent
+    PagesComponent
   ],
   imports: [
     SharedModule,
     FormsModule,
+    ChartsModule,
     PAGES_ROUTER
   ]
 })

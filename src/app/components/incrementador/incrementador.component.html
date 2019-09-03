@@ -2,13 +2,13 @@
 
 <div class="input-group">
     <span class="input-group-btn">
-        <button class="btn btn-outline-danger" type="button" (click)="decrementar()">
+        <button class="btn btn-outline-danger" type="button" (click)="decrementar(progreso)">
             <i class="fa fa-minus"></i>
         </button>
     </span>
-    <input type="number" class="form-control" placeholder="Porcetaje barra" name="progreso" [(ngModel)]="progreso">
+    <input type="number" class="form-control" placeholder="Porcetaje barra" name="progreso" [(ngModel)]="progreso" min="0" max="100" #entrada (ngModelChange)="cambiarValor($event)">
     <span class="input-group-btn">
-        <button class="btn btn-outline-success" type="button" (click)="incrementar()"> 
+        <button class="btn btn-outline-success" type="button" (click)="incrementar(progreso)"> 
             <i class="fa fa-plus"></i>
         </button>
     </span>
