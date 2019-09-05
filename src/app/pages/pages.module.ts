@@ -10,13 +10,15 @@ import { IncrementadorComponent } from '../components/incrementador/incrementado
 
 // Para generar los gráficos
 import { ChartsModule } from 'ng2-charts';
+import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
 
 @NgModule({ declarations: [
     DashboardComponent,
     ProgressComponent,
     Graficas1Component,
     PagesComponent,
-    IncrementadorComponent
+    IncrementadorComponent,
+    GraficoDonaComponent
   ],
   exports: [
     DashboardComponent,
