@@ -9,13 +9,17 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AccountSettingsComponent implements OnInit {
 
+  tema = '';
+
   constructor(@Inject(DOCUMENT) private document) { }
 
   ngOnInit() {
   }
 
   cambiarTema(color: string) {
-    this.document.getElementById('tema').setAttribute('href', );
+    this.tema = 'assets/css/colors/' + color + '.css';
+    console.log(this.tema);
+    this.document.getElementById('tema').setAttribute('href', this.tema);
   }
 
 }
