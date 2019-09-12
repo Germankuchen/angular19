@@ -5,5 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
 
+  menu: any = [
+    {nombre: 'Principal',
+     icono: 'mdi mdi-gauge',
+     submenu: [
+       {nombre: 'Dashboard', url: '/dashboard'},
+       {nombre: 'Gráficas', url: '/grafica1'},
+       {nombre: 'Progress bar', url: '/progress'}
+     ]}
+  ];
+
   constructor() { }
 }
