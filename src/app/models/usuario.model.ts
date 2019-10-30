@@ -1,11 +1,11 @@
 export class Usuario {
-    private nombre: string;
-    private email: string;
-    private password: string;
-    private role: string;
-    private img: string;
-    private google: boolean;
-    private _id: string;
+    public nombre: string;
+    public email: string;
+    public password: string;
+    public role: string;
+    public img: string;
+    public google: boolean;
+    public _id: string;
 
     constructor(
         nombre: string, email: string, password: string, role?: string, img?: string, google?: boolean, id?: string

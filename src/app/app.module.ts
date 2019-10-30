@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Rutas
 import { APP_ROUTES } from './app.routes';
@@ -27,6 +27,7 @@ import { RegisterComponent } from './login/register.component';
     PagesModule,
     FormsModule,
     ServiceModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(APP_ROUTES, {useHash: true})
   ],
   providers: [],
