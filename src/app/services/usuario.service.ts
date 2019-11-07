@@ -14,8 +14,18 @@ export class UsuarioService {
 
   agregar(usuario: Usuario) {
     const url = BACKEND_URL + '/usuario';
-    console.log('Se va a llamar a la url: ' + url)
+    console.log('Se va a llamar a la url: ' + url);
     return this.http.post(url, usuario);
+  }
+
+  login(usuario: Usuario, recuerdame: boolean) {
+    const url = BACKEND_URL + '/login';
+    console.log('Se va a llamar a la url: ' + url);
+    const cuerpo = {
+      email: usuario.email,
+      password: usuario.password
+    };
+    return this.http.post(url, cuerpo);
   }
 
 }

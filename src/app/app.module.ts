@@ -14,6 +14,7 @@ import { ServiceModule } from './services/service.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { RegisterComponent } from './login/register.component';
     FormsModule,
     ServiceModule,
     ReactiveFormsModule,
+    SweetAlert2Module,
     RouterModule.forRoot(APP_ROUTES, {useHash: true})
   ],
   providers: [],
