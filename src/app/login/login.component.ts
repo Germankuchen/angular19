@@ -21,10 +21,21 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     initPlugins();
+    if (localStorage.getItem('email')) {
+      this.usuario = localStorage.getItem('email');
+      this.recordarme = true;
+    }
   }
 
   ingresar() {
     console.log('Lo que ustede ingreso es ' + this.usuario + ', ' + this.password + ', ' + this.recordarme);
+
+    if (this.recordarme) {
+      localStorage.setItem('email', this.usuario);
+    } else {
+      localStorage.removeItem('email');
+    }
+
     const usu = new Usuario(null, this.usuario, this.password);
     this.usuarioService.login(usu, this.recordarme).subscribe((info: any) => {
       console.log(info);
