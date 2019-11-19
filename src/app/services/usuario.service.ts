@@ -8,8 +8,16 @@ import { BACKEND_URL } from '../config/config';
 })
 export class UsuarioService {
 
+  usuario: Usuario;
+  token: string;
+
   constructor(private http: HttpClient) {
     console.log('Usuario de servicio iniciado');
+    this.cargarStorage();
+  }
+
+  estaLogueado(){
+    return (this.token != null);
   }
 
   agregar(usuario: Usuario) {
@@ -26,6 +34,41 @@ export class UsuarioService {
       password: usuario.password
     };
     return this.http.post(url, cuerpo);
+  }
+
+  loginConGoogle(token: string) {
+    const url = BACKEND_URL + '/login/google';
+    console.log('Se va a llamar a la url: ' + url);
+    const cuerpo = {
+      token: token
+    };
+    return this.http.post(url, cuerpo);
+  }
+
+  logout() {
+    this.usuario = null;
+    this.token = null;
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('id');
+  }
+
+  guardarStorage(id: string, token: string, usuario: Usuario) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+    localStorage.setItem('id', id);
+    this.token = token;
+    this.usuario = usuario;
+  }
+
+  cargarStorage() {
+    if (localStorage.getItem('token')) {
+      this.token = localStorage.getItem('token');
+      this.usuario = JSON.parse(localStorage.getItem('usuario'));
+    } else {
+      this.token = null;
+      this.usuario = null;
+    }
   }
 
 }
