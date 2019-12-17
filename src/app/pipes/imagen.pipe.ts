@@ -7,6 +7,10 @@ import { BACKEND_URL } from '../config/config';
 export class ImagenPipe implements PipeTransform {
 
   transform(img: string, tipo = 'usuario'): any {
+    console.log('imagen: ' + img);
+    if (img === undefined) {
+      return BACKEND_URL + '/imagen/usuarios/123';
+    }
 
     if (img.indexOf('https') !== -1) {
       return img;

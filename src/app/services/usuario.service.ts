@@ -26,6 +26,13 @@ export class UsuarioService {
     return this.http.post(url, usuario);
   }
 
+  actualizarUsuario(usuario: Usuario) {
+    let url = BACKEND_URL + '/usuario/' + usuario._id;
+    url += '?token=' + this.token;
+    console.log('Se va a llamar a la url: ' + url);
+    return this.http.put(url, usuario);
+  }
+
   login(usuario: Usuario, recuerdame: boolean) {
     const url = BACKEND_URL + '/login';
     console.log('Se va a llamar a la url: ' + url);
