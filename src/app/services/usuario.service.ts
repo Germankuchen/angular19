@@ -30,12 +30,14 @@ export class UsuarioService {
     let url = BACKEND_URL + '/usuario/' + usuario._id;
     url += '?token=' + this.token;
     console.log('Se va a llamar a la url: ' + url);
+    console.log(JSON.stringify(usuario));
     return this.http.put(url, usuario);
   }
 
   login(usuario: Usuario, recuerdame: boolean) {
     const url = BACKEND_URL + '/login';
     console.log('Se va a llamar a la url: ' + url);
+    console.log(usuario);
     const cuerpo = {
       email: usuario.email,
       password: usuario.password
@@ -66,6 +68,12 @@ export class UsuarioService {
     localStorage.setItem('id', id);
     this.token = token;
     this.usuario = usuario;
+  }
+
+  guardarStorageReducido() {
+    localStorage.setItem('token', this.token);
+    localStorage.setItem('usuario', JSON.stringify(this.usuario));
+    localStorage.setItem('id', this.usuario._id);
   }
 
   cargarStorage() {

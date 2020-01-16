@@ -1,3 +1,4 @@
+export { SubirArchivoService } from './subir-archivo.service';
 export { UsuarioService } from './usuario.service';
 export { SettingsService } from './settings/settings.service';
 export { SharedService } from './shared/shared.service';
