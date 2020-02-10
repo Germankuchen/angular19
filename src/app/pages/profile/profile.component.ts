@@ -36,6 +36,10 @@ export class ProfileComponent implements OnInit {
 
    subirArchivo() {
      console.log('Presiono subir imagen');
+     if (this.imagenASubir.type.indexOf('image') < 0) {
+       alert('Debe seleccionar una imagen');
+       return;
+     }
      this.subirArchivoService.subirArchivo(this.imagenASubir, 'usuarios', this.usuarioService.usuario._id).then((info: any) => {
        console.log('Se subio el archivo');
        console.log(info);
