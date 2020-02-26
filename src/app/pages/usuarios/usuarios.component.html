@@ -1,0 +1,77 @@
+<form name="mantenimientoUsuario">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <input type="text" [(ngModel)]="usuarioBuscado" (keyup)="filtrarUsuario()" placeholder="Buscar usuario" class="form-control" name="usuarioBuscado">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="loadingCargando" name="loading">
+        <div class="col-sm-12">
+            <div class="alert alert-warning text-center">
+                <strong>Cargando</strong>
+                <br>
+                <i class="fa fa-refresh fa-spin fa-2x"> </i>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="!loadingCargando">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Usuarios registrados (<small>{{totalRegistros}}</small>)</h3>
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Email</th>
+                                <th>Nombre</th>
+                                <th>Role</th>
+                                <th class="text-center">Autenticación</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of usuariosVisualizados">
+                                <td><img [src]="usuario.img | imagen" class="imgChica img-circle" />
+                                </td>
+                                <td>{{usuario.email}}</td>
+                                <td class="pointer" (click)="abrirModal(usuario)">{{usuario.nombre}}</td>
+                                <td>
+                                    <select [name]="'rol'+usuario._id" [(ngModel)]="usuario.role" class="form-control"> 
+                                        <option value="ADMIN_ROLE">ADMIN_ROLE</option>
+                                        <option value="USER_ROLE">USER_ROLE</option>
+                                    </select>
+                                </td>
+                                <td class="text-center">
+                                    <label class="label label-danger" *ngIf="usuario.esUsuarioGoogle">Google</label>
+                                    <label class="label label-info" *ngIf="!usuario.esUsuarioGoogle">Normal</label>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-primary" (click)="guardar(usuario)" style="margin-right: 10px;">
+                                            <i class="fa fa-save"></i>
+                                        </button>
+                                    <button class="btn btn-danger" (click)="borrar(usuario)">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="col-md-12">
+                        <button class="btn btn-secondary" title="Ir a la primer página" (click)="primero()" [disabled]="paginaActual === 1"><<</button>
+                        <button class="btn btn-secondary" title="Ir a la página anterior" (click)="anterior()" [disabled]="paginaActual === 1"><</button>
+                        <button class="btn btn-primary" title="Ir a la página anterior">{{paginaActual}} de {{cantPaginas}}</button>
+                        <button class="btn btn-secondary" title="Ir a la página posterior" (click)="siguiente()" [disabled]="paginaActual === cantPaginas">></button>
+                        <button class="btn btn-secondary" title="Ir a la última página" (click)="ultimo()" [disabled]="paginaActual === cantPaginas">>></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

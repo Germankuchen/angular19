@@ -5,6 +5,7 @@ import { SettingsService, SharedService, SidebarService, UsuarioService } from '
 import { HttpClientModule } from '@angular/common/http';
 import { LoginGuardsGuard } from './guards/login-guards.guard';
 import { SubirArchivoService } from './subir-archivo.service';
+import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { SubirArchivoService } from './subir-archivo.service';
     HttpClientModule
   ],
   providers: [
-    SettingsService, SharedService, SidebarService, UsuarioService, LoginGuardsGuard, SubirArchivoService
+    SettingsService, SharedService, SidebarService, UsuarioService, LoginGuardsGuard, SubirArchivoService, ModalUploadService
   ]
 })
 export class ServiceModule { }

@@ -15,12 +15,14 @@
                     </ul>
                 </li>
                 <li class="nav-devider"></li>
-                <li class="nav-small-cap">Principal</li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i [class]="sidebar.menu[0].icono"></i><span class="hide-menu">{{sidebar.menu[0].nombre}} <span class="label label-rouded label-themecolor pull-right">{{sidebar.menu[0].submenu.length}}</span></span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li *ngFor="let menu of sidebar.menu[0].submenu"><a [routerLink]="menu.url" routerLinkActive="active">{{menu.nombre}} </a></li>
-                    </ul>
-                </li>
+                <div *ngFor="let menu of sidebar.menu">
+
+                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i [class]="menu.icono"></i><span class="hide-menu">{{menu.nombre}} <span class="label label-rouded label-themecolor pull-right">{{menu.submenu.length}}</span></span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li *ngFor="let submenu of menu.submenu"><a [routerLink]="submenu.url" routerLinkActive="active">{{submenu.nombre}} </a></li>
+                        </ul>
+                    </li>
+                </div>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

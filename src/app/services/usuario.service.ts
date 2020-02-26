@@ -26,6 +26,22 @@ export class UsuarioService {
     return this.http.post(url, usuario);
   }
 
+  borrar(usuarioABorrar: Usuario) {
+    const url = BACKEND_URL + '/usuario/' + usuarioABorrar._id + '?token=' + this.token;
+    console.log('Se va a llamar a la url: ' + url);
+    return this.http.delete(url);
+  }
+
+  obtenerUsuarios(desde: number = 0) {
+    const url = BACKEND_URL + '/usuario?desde=' + desde;
+    return this.http.get(url);
+  }
+
+  filtrarUsuarios(texto: string) {
+    const url = BACKEND_URL + '/busqueda/coleccion/usuarios/' + texto;
+    return this.http.get(url);
+  }
+
   actualizarUsuario(usuario: Usuario) {
     let url = BACKEND_URL + '/usuario/' + usuario._id;
     url += '?token=' + this.token;

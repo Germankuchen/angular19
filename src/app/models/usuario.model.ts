@@ -4,18 +4,18 @@ export class Usuario {
     public password: string;
     public role: string;
     public img: string;
-    public google: boolean;
+    public esUsuarioGoogle: boolean;
     public _id: string;
 
     constructor(
-        nombre: string, email: string, password: string, role?: string, img?: string, google?: boolean, id?: string
+        nombre: string, email: string, password: string, role?: string, img?: string, esUsuarioGoogle?: boolean, id?: string
     ) {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
         this.role = role;
         this.img = img;
-        this.google = google;
+        this.esUsuarioGoogle = esUsuarioGoogle;
         this._id = id;
     }
 }
