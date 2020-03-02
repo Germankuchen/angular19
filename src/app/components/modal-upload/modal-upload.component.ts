@@ -9,6 +9,7 @@ import { ModalUploadService } from './modal-upload.service';
 export class ModalUploadComponent implements OnInit {
 
   oculto = '';
+  nombre = '';
 
   constructor(private modalService: ModalUploadService) {
     console.log('cargo el modal upload');
